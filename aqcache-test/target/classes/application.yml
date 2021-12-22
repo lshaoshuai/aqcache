@@ -1,0 +1,10 @@
+server:
+  port: 12223
+
+aqcache:
+  statIntervalMinutes: 15 #统计间隔分钟
+  areaInCacheName: false
+  local:
+    default: #默认area
+      type: linkedhashmap
+      keyConvertor: fastjson
