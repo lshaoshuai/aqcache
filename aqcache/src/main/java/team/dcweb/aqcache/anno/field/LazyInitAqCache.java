@@ -7,6 +7,7 @@ import team.dcweb.aqcache.anno.CachePenetrationProtect;
 import team.dcweb.aqcache.anno.CacheRefresh;
 import team.dcweb.aqcache.anno.CreateAqCache;
 import team.dcweb.aqcache.anno.listener.AbstractCacheEventListener;
+import team.dcweb.aqcache.anno.listener.AbstractCacheSetting;
 import team.dcweb.aqcache.anno.listener.CacheEventListener;
 import team.dcweb.aqcache.anno.method.CacheConfigUtil;
 import team.dcweb.aqcache.anno.support.*;
@@ -88,10 +89,18 @@ class LazyInitAqCache implements ProxyAqCache {
             if (ann.method().getSuperclass().equals(AbstractCacheEventListener.class)) {
                 cac.setCacheEventListener((CacheEventListener) ann.method().newInstance());
             }
+            if (ann.cacheSetting().getSuperclass().equals(AbstractCacheSetting.class)) {
+                cac.setCacheSetting((AbstractCacheSetting) ann.cacheSetting().newInstance());
+            }
+            if (cac.getCacheSetting().getLocalLimit() != CacheConsts.UNDEFINED_INT) {
+                cac.setLocalLimit(cac.getCacheSetting().getLocalLimit());
+            }
+            if (cac.getCacheSetting().getLocalExpire() != CacheConsts.UNDEFINED_INT) {
+                cac.setLocalExpire(cac.getCacheSetting().getLocalExpire());
+            }
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
-
         cac.setRefreshPolicy(refreshPolicy);
         cac.setPenetrationProtectConfig(protectConfig);
 

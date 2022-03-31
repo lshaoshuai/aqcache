@@ -1,6 +1,7 @@
 package team.dcweb.aqcache.anno;
 
 import team.dcweb.aqcache.anno.listener.DefaultCacheEventListener;
+import team.dcweb.aqcache.anno.listener.DefaultCacheSetting;
 
 import java.lang.annotation.*;
 import java.util.concurrent.TimeUnit;
@@ -94,6 +95,11 @@ public @interface CreateAqCache {
      * @return class
      */
     Class method() default DefaultCacheEventListener.class;
+
+    /**
+     * @return class
+     */
+    Class cacheSetting() default DefaultCacheSetting.class;
 
     /**
      * @return max of os cache memory

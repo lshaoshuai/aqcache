@@ -1,5 +1,7 @@
 package team.dcweb.aqcache.anno.support;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import team.dcweb.aqcache.AqCache;
 import team.dcweb.aqcache.anno.CacheConsts;
 import team.dcweb.aqcache.anno.EnableCache;
@@ -8,8 +10,6 @@ import team.dcweb.aqcache.anno.method.CacheInvokeConfig;
 import team.dcweb.aqcache.anno.method.CacheInvokeContext;
 import team.dcweb.aqcache.embedded.EmbeddedAqCacheBuilder;
 import team.dcweb.aqcache.exception.CacheConfigException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.function.Supplier;
 
@@ -145,7 +145,6 @@ public class CacheContext {
         if (cachedAnnoConfig.getLocalLimit() != CacheConsts.UNDEFINED_INT) {
             cacheBuilder.setLimit(cachedAnnoConfig.getLocalLimit());
         }
-        //TODO
         if (cachedAnnoConfig.getCacheEventListener() != null) {
             cacheBuilder.setCacheEventListener(cachedAnnoConfig.getCacheEventListener());
         }

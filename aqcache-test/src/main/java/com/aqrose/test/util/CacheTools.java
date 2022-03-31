@@ -1,10 +1,10 @@
 package com.aqrose.test.util;
 
+import org.opencv.core.Mat;
+import org.springframework.stereotype.Component;
 import team.dcweb.aqcache.AqCache;
 import team.dcweb.aqcache.anno.AqCacheType;
 import team.dcweb.aqcache.anno.CreateAqCache;
-import org.opencv.core.Mat;
-import org.springframework.stereotype.Component;
 
 /**
  * @author hongkun
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class CacheTools {
 
-    @CreateAqCache(cacheType = AqCacheType.LOCAL, localLimit = 5, method = MatCacheEventListener.class, limitMemory = 0.4)
+    @CreateAqCache(cacheType = AqCacheType.LOCAL, localLimit = 5, method = MatCacheEventListener.class, limitMemory = 0.4, cacheSetting = VrsCacheSetting.class)
     public AqCache<String, Mat> test;
 }
