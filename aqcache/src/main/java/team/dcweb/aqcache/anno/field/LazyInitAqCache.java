@@ -90,7 +90,8 @@ class LazyInitAqCache implements ProxyAqCache {
                 cac.setCacheEventListener((CacheEventListener) ann.method().newInstance());
             }
             if (ann.cacheSetting().getSuperclass().equals(AbstractCacheSetting.class)) {
-                cac.setCacheSetting((AbstractCacheSetting) ann.cacheSetting().newInstance());
+                AbstractCacheSetting cacheSetting = beanFactory.getBean((Class<? extends AbstractCacheSetting>) ann.cacheSetting());
+                cac.setCacheSetting(cacheSetting);
             }
             if (cac.getCacheSetting().getLocalLimit() != CacheConsts.UNDEFINED_INT) {
                 cac.setLocalLimit(cac.getCacheSetting().getLocalLimit());

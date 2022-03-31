@@ -8,3 +8,4 @@ aqcache:
     default: #默认area
       type: linkedhashmap
       keyConvertor: fastjson
+      gerber: 1

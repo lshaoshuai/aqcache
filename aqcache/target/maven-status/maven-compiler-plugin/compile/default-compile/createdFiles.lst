@@ -2,6 +2,7 @@ team\dcweb\aqcache\anno\method\CacheHandler$CacheContextSupport.class
 team\dcweb\aqcache\anno\support\CacheContext.class
 team\dcweb\aqcache\anno\support\ConfigMap.class
 team\dcweb\aqcache\ResultData.class
+team\dcweb\aqcache\anno\listener\DefaultCacheSetting.class
 team\dcweb\aqcache\autoconfigure\LinkedHashMapAutoConfiguration.class
 team\dcweb\aqcache\anno\method\MvelEvaluator.class
 team\dcweb\aqcache\anno\CacheRefresh.class
@@ -115,6 +116,7 @@ team\dcweb\aqcache\autoconfigure\AqCacheAutoConfiguration.class
 team\dcweb\aqcache\CacheLoader.class
 team\dcweb\aqcache\embedded\EmbeddedCacheConfig.class
 team\dcweb\aqcache\anno\method\CacheConfigUtil.class
+team\dcweb\aqcache\anno\listener\AbstractCacheSetting.class
 team\dcweb\aqcache\anno\method\SpelEvaluator.class
 team\dcweb\aqcache\CacheUtil$ProxyLoader.class
 team\dcweb\aqcache\CacheResult.class

@@ -35,8 +35,6 @@ class CreateAqCacheTest {
             Mat mat3 = new Mat(3, 3, CV_8UC1, new Scalar(0));
             Mat mat4 = new Mat(4, 4, CV_8UC1, new Scalar(0));
             Mat mat5 = new Mat(5, 5, CV_8UC1, new Scalar(0));
-            Mat mat6 = new Mat(6, 6, CV_8UC1, new Scalar(0));
-            Mat mat7 = new Mat(7, 7, CV_8UC1, new Scalar(0));
             cacheTools.test.put("key1", mat1);
             cacheTools.test.put("key2", mat2);
             cacheTools.test.put("key3", mat3);
