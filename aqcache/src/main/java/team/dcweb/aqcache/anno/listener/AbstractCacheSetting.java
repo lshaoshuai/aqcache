@@ -8,12 +8,14 @@ import team.dcweb.aqcache.anno.CacheConsts;
  * @author hongkun
  * @version 1.0.0
  */
-public abstract class AbstractCacheSetting {
+public abstract class AbstractCacheSetting implements CacheSetting {
 
+    @Override
     public int getLocalLimit() {
         return CacheConsts.UNDEFINED_INT;
     }
 
+    @Override
     public int getLocalExpire() {
         return CacheConsts.UNDEFINED_INT;
     }

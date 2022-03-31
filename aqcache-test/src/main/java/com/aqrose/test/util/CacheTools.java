@@ -19,6 +19,6 @@ public class CacheTools {
     @Resource
     VrsCacheSetting vrsCacheSetting;
 
-    @CreateAqCache(cacheType = AqCacheType.LOCAL, localLimit = 5, method = MatCacheEventListener.class, limitMemory = 0.4, cacheSetting = VrsCacheSetting.class)
+    @CreateAqCache(cacheType = AqCacheType.LOCAL, localLimit = 5, method = MatCacheEventListener.class, limitMemory = 0.4)
     public AqCache<String, Mat> test;
 }

@@ -2,8 +2,8 @@ package team.dcweb.aqcache.anno.support;
 
 import team.dcweb.aqcache.RefreshPolicy;
 import team.dcweb.aqcache.anno.AqCacheType;
-import team.dcweb.aqcache.anno.listener.AbstractCacheSetting;
 import team.dcweb.aqcache.anno.listener.CacheEventListener;
+import team.dcweb.aqcache.anno.listener.CacheSetting;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
@@ -27,7 +27,7 @@ public class CachedAnnoConfig extends CacheAnnoConfig {
     private String keyConvertor;
     private String postCondition;
     private CacheEventListener cacheEventListener;
-    private AbstractCacheSetting cacheSetting;
+    private CacheSetting cacheSetting;
     private double limitMemory;
 
     private Function<Object, Boolean> postConditionEvaluator;
@@ -147,11 +147,11 @@ public class CachedAnnoConfig extends CacheAnnoConfig {
         this.cacheEventListener = cacheEventListener;
     }
 
-    public AbstractCacheSetting getCacheSetting() {
+    public CacheSetting getCacheSetting() {
         return cacheSetting;
     }
 
-    public void setCacheSetting(AbstractCacheSetting cacheSetting) {
+    public void setCacheSetting(CacheSetting cacheSetting) {
         this.cacheSetting = cacheSetting;
     }
 

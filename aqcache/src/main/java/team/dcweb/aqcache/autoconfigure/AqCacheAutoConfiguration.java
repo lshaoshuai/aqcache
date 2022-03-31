@@ -1,14 +1,15 @@
 package team.dcweb.aqcache.autoconfigure;
 
 
-import team.dcweb.aqcache.anno.support.GlobalAqCacheConfig;
-import team.dcweb.aqcache.anno.support.SpringConfigProvider;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import team.dcweb.aqcache.anno.listener.DefaultCacheSetting;
+import team.dcweb.aqcache.anno.support.GlobalAqCacheConfig;
+import team.dcweb.aqcache.anno.support.SpringConfigProvider;
 
 /**
  * Created on 2016/11/17.
@@ -19,7 +20,7 @@ import org.springframework.context.annotation.Import;
 @ConditionalOnClass(GlobalAqCacheConfig.class)
 @ConditionalOnMissingBean(GlobalAqCacheConfig.class)
 @EnableConfigurationProperties(AqCacheProperties.class)
-@Import({LinkedHashMapAutoConfiguration.class})
+@Import({LinkedHashMapAutoConfiguration.class, DefaultCacheSetting.class})
 public class AqCacheAutoConfiguration {
 
     public static final String GLOBAL_AQCACHE_CONFIG_NAME = "globalAqCacheConfig";

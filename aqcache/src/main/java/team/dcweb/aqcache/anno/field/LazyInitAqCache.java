@@ -9,6 +9,7 @@ import team.dcweb.aqcache.anno.CreateAqCache;
 import team.dcweb.aqcache.anno.listener.AbstractCacheEventListener;
 import team.dcweb.aqcache.anno.listener.AbstractCacheSetting;
 import team.dcweb.aqcache.anno.listener.CacheEventListener;
+import team.dcweb.aqcache.anno.listener.CacheSetting;
 import team.dcweb.aqcache.anno.method.CacheConfigUtil;
 import team.dcweb.aqcache.anno.support.*;
 import team.dcweb.aqcache.lock.AutoReleaseLock;
@@ -90,7 +91,7 @@ class LazyInitAqCache implements ProxyAqCache {
                 cac.setCacheEventListener((CacheEventListener) ann.method().newInstance());
             }
             if (ann.cacheSetting().getSuperclass().equals(AbstractCacheSetting.class)) {
-                AbstractCacheSetting cacheSetting = beanFactory.getBean((Class<? extends AbstractCacheSetting>) ann.cacheSetting());
+                CacheSetting cacheSetting = beanFactory.getBean((Class<? extends AbstractCacheSetting>) ann.cacheSetting());
                 cac.setCacheSetting(cacheSetting);
             }
             if (cac.getCacheSetting().getLocalLimit() != CacheConsts.UNDEFINED_INT) {
