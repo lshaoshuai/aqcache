@@ -12,6 +12,7 @@ import team.dcweb.aqcache.anno.listener.CacheEventListener;
 import team.dcweb.aqcache.anno.listener.CacheSetting;
 import team.dcweb.aqcache.anno.method.CacheConfigUtil;
 import team.dcweb.aqcache.anno.support.*;
+import team.dcweb.aqcache.embedded.AqEntry;
 import team.dcweb.aqcache.lock.AutoReleaseLock;
 
 import java.lang.reflect.Field;
@@ -286,5 +287,15 @@ class LazyInitAqCache implements ProxyAqCache {
     @Override
     public Collection values() {
         return aqCache.values();
+    }
+
+    @Override
+    public AqEntry getEldestEntry() {
+        return aqCache.getEldestEntry();
+    }
+
+    @Override
+    public Set<AqEntry> entrySet() {
+        return aqCache.entrySet();
     }
 }

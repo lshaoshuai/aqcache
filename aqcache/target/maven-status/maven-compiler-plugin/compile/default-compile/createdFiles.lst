@@ -17,6 +17,7 @@ team\dcweb\aqcache\anno\Cached.class
 team\dcweb\aqcache\anno\method\CacheInvokeConfig.class
 team\dcweb\aqcache\embedded\LinkedHashMapAqCacheBuilder.class
 team\dcweb\aqcache\event\CacheGetEvent.class
+team\dcweb\aqcache\anno\listener\CacheSetting.class
 team\dcweb\aqcache\support\StatInfo.class
 team\dcweb\aqcache\support\DefaultMetricsManager$2.class
 team\dcweb\aqcache\event\CacheEvent.class

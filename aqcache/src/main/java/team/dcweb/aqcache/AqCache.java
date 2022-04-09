@@ -2,6 +2,7 @@ package team.dcweb.aqcache;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import team.dcweb.aqcache.embedded.AqEntry;
 import team.dcweb.aqcache.exception.CacheInvokeException;
 import team.dcweb.aqcache.lock.AutoReleaseLock;
 
@@ -493,4 +494,8 @@ public interface AqCache<K, V> extends Closeable {
     boolean isKeyExist(K key);
 
     Collection<V> values();
+
+    AqEntry<K, V> getEldestEntry();
+
+    Set<AqEntry<K, V>> entrySet();
 }

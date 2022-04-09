@@ -58,6 +58,7 @@ D:\Luo\ideaproject\aqcache-parent\aqcache\src\main\java\team\dcweb\aqcache\excep
 D:\Luo\ideaproject\aqcache-parent\aqcache\src\main\java\team\dcweb\aqcache\support\CacheMessagePublisher.java
 D:\Luo\ideaproject\aqcache-parent\aqcache\src\main\java\team\dcweb\aqcache\CacheGetResult.java
 D:\Luo\ideaproject\aqcache-parent\aqcache\src\main\java\team\dcweb\aqcache\embedded\EmbeddedAqCacheBuilder.java
+D:\Luo\ideaproject\aqcache-parent\aqcache\src\main\java\team\dcweb\aqcache\anno\listener\CacheSetting.java
 D:\Luo\ideaproject\aqcache-parent\aqcache\src\main\java\team\dcweb\aqcache\autoconfigure\BeanDependencyManager.java
 D:\Luo\ideaproject\aqcache-parent\aqcache\src\main\java\team\dcweb\aqcache\anno\SerialPolicy.java
 D:\Luo\ideaproject\aqcache-parent\aqcache\src\main\java\team\dcweb\aqcache\autoconfigure\AqCacheCondition.java

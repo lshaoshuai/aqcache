@@ -1,12 +1,10 @@
 package com.aqrose.test.util;
 
-import team.dcweb.aqcache.CacheValueHolder;
-import team.dcweb.aqcache.anno.listener.AbstractCacheEventListener;
 import org.opencv.core.Mat;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Map;
+import team.dcweb.aqcache.anno.listener.AbstractCacheEventListener;
+import team.dcweb.aqcache.embedded.AqEntry;
 
 /**
  * Create On 2021/7/19
@@ -14,20 +12,13 @@ import java.util.Map;
  * @author hongkun
  * @version 1.0.0
  */
-public class MatCacheEventListener extends AbstractCacheEventListener<Map.Entry> {
+public class MatCacheEventListener extends AbstractCacheEventListener<AqEntry<String, Mat>> {
 
     private static Logger logger = LoggerFactory.getLogger(MatCacheEventListener.class);
 
     @Override
-    public void onEvent(Map.Entry eldest) {
-        //todo test
-        if (eldest.getValue() instanceof CacheValueHolder) {
-            CacheValueHolder h = (CacheValueHolder) eldest.getValue();
-            if (h.getValue() instanceof Mat) {
-                logger.info("height : " + ((Mat) h.getValue()).height());
-                ((Mat) h.getValue()).release();
-                logger.info("height : " + ((Mat) h.getValue()).height());
-            }
-        }
+    public void onEvent(AqEntry<String, Mat> eldest) {
+        logger.info("release : " + eldest);
+        eldest.getValue().release();
     }
 }

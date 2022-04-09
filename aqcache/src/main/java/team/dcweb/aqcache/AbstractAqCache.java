@@ -3,6 +3,7 @@ package team.dcweb.aqcache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import team.dcweb.aqcache.embedded.AbstractEmbeddedAqCache;
+import team.dcweb.aqcache.embedded.AqEntry;
 import team.dcweb.aqcache.event.*;
 import team.dcweb.aqcache.exception.CacheException;
 
@@ -337,6 +338,12 @@ public abstract class AbstractAqCache<K, V> implements AqCache<K, V> {
 
     protected abstract CacheResult do_PUT_IF_ABSENT(K key, V value, long expireAfterWrite, TimeUnit timeUnit);
 
+    @Override
+    public abstract AqEntry<K, V> getEldestEntry();
+
+    @Override
+    public abstract Set<AqEntry<K, V>> entrySet();
+    
     static class LoaderLock {
         CountDownLatch signal;
         Thread loaderThread;

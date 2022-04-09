@@ -73,7 +73,7 @@ public abstract class AbstractEmbeddedAqCache<K, V> extends AbstractAqCache<K, V
     protected MultiGetResult<K, V> do_GET_ALL(Set<? extends K> keys) {
         ArrayList<K> keyList = new ArrayList<K>(keys.size());
         ArrayList<Object> newKeyList = new ArrayList<Object>(keys.size());
-        keys.stream().forEach((k) -> {
+        keys.forEach((k) -> {
             Object newKey = buildKey(k);
             keyList.add(k);
             newKeyList.add(newKey);
@@ -86,8 +86,7 @@ public abstract class AbstractEmbeddedAqCache<K, V> extends AbstractAqCache<K, V
             CacheValueHolder<V> holder = innerResultMap.get(newKey);
             resultMap.put(key, parseHolderResult(holder));
         }
-        MultiGetResult<K, V> result = new MultiGetResult<>(CacheResultCode.SUCCESS, null, resultMap);
-        return result;
+        return new MultiGetResult<>(CacheResultCode.SUCCESS, null, resultMap);
     }
 
     @Override
@@ -155,5 +154,26 @@ public abstract class AbstractEmbeddedAqCache<K, V> extends AbstractAqCache<K, V
     @Override
     public Collection<V> values() {
         return innerMap.values();
+    }
+
+    @Override
+    public AqEntry<K, V> getEldestEntry() {
+        AqEntry<K, V> entry = new AqEntry<>();
+        Map.Entry<K, CacheValueHolder<V>> eldest = innerMap.getEldestEntry();
+        CacheValueHolder<V> holder = eldest.getValue();
+        entry.put(eldest.getKey(), parseHolderResult(holder).getValue());
+        return entry;
+    }
+
+    @Override
+    public Set<AqEntry<K, V>> entrySet() {
+        Set<AqEntry<K, V>> set = new HashSet<>();
+        for (Map.Entry<K, CacheValueHolder<V>> entry : innerMap.entrySet()) {
+            AqEntry<K, V> aqEntry = new AqEntry<>();
+            CacheValueHolder<V> holder = entry.getValue();
+            aqEntry.put(entry.getKey(), parseHolderResult(holder).getValue());
+            set.add(aqEntry);
+        }
+        return set;
     }
 }

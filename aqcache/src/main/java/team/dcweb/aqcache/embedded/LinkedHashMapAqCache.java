@@ -34,7 +34,7 @@ public class LinkedHashMapAqCache<K, V> extends AbstractEmbeddedAqCache<K, V> {
 
     @Override
     public <T> T unwrap(Class<T> clazz) {
-        if (clazz.equals(LinkedHashMap.class)) {
+        if (clazz.equals(AqLinkedHashMap.class)) {
             return (T) innerMap;
         }
         throw new IllegalArgumentException(clazz.getName());
@@ -44,7 +44,7 @@ public class LinkedHashMapAqCache<K, V> extends AbstractEmbeddedAqCache<K, V> {
         ((LRUMap) innerMap).cleanExpiredEntry();
     }
 
-    final class LRUMap extends LinkedHashMap implements InnerMap {
+    final class LRUMap extends AqLinkedHashMap implements InnerMap {
 
         private final int max;
         private final double memory;
@@ -62,7 +62,10 @@ public class LinkedHashMapAqCache<K, V> extends AbstractEmbeddedAqCache<K, V> {
         @Override
         protected boolean removeEldestEntry(Map.Entry eldest) {
             if (size() > max) {
-                cacheEventListener.onEvent(eldest);
+                AqEntry<K, V> entry = new AqEntry<>();
+                CacheValueHolder<V> holder = (CacheValueHolder<V>) eldest.getValue();
+                entry.put((K) eldest.getKey(), parseHolderResult(holder).getValue());
+                cacheEventListener.onEvent(entry);
             }
             return size() > max;
         }
@@ -177,14 +180,23 @@ public class LinkedHashMapAqCache<K, V> extends AbstractEmbeddedAqCache<K, V> {
         }
 
         @Override
-        public List<Object> values() {
-            List<Object> list = new ArrayList<>();
+        public List values() {
+            List list = new ArrayList<>();
             super.values().forEach(item -> {
                 CacheValueHolder h = (CacheValueHolder) item;
                 list.add(h.getValue());
             });
             return list;
         }
-    }
 
+        @Override
+        public Map.Entry getEldestEntry() {
+            return super.getEldestEntry();
+        }
+
+        @Override
+        public Set<Map.Entry> entrySet() {
+            return super.entrySet();
+        }
+    }
 }

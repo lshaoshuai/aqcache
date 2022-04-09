@@ -32,4 +32,8 @@ public interface InnerMap {
     boolean isKeyExist(Object key);
 
     Collection values();
+
+    Map.Entry getEldestEntry();
+
+    Set<Map.Entry> entrySet();
 }

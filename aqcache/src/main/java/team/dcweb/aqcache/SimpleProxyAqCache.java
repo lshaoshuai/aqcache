@@ -1,5 +1,6 @@
 package team.dcweb.aqcache;
 
+import team.dcweb.aqcache.embedded.AqEntry;
 import team.dcweb.aqcache.lock.AutoReleaseLock;
 
 import java.util.Collection;
@@ -176,4 +177,15 @@ public class SimpleProxyAqCache<K, V> implements ProxyAqCache<K, V> {
     public Collection<V> values() {
         return aqCache.values();
     }
+
+    @Override
+    public AqEntry<K, V> getEldestEntry() {
+        return aqCache.getEldestEntry();
+    }
+
+    @Override
+    public Set<AqEntry<K, V>> entrySet() {
+        return aqCache.entrySet();
+    }
+
 }
